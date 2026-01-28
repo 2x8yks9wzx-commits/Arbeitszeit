@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arbeitszeit – Lehrkraft</title>
+  <meta name="theme-color" content="#0a7cff" />
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Arbeitszeiterfassung</h1>
+    <button id="installBtn" class="secondary hidden">Installieren</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Timer</h2>
+      <div class="controls">
+        <label for="categorySelect">Kategorie</label>
+        <div class="row">
+          <select id="categorySelect"></select>
+          <button id="addCategoryBtn" class="secondary">+ Kategorie</button>
+        </div>
+
+        <label for="noteInput">Notiz (optional)</label>
+        <input id="noteInput" type="text" placeholder="z. B. Klasse 7b, Thema Bruchrechnen" />
+
+        <div class="timer-row">
+          <div class="time-display">
+            <span id="timerDisplay">00:00:00</span>
+            <small id="timerSince"></small>
+          </div>
+          <button id="toggleTimerBtn" class="primary big">Start</button>
+        </div>
+      </div>
+      <div class="info">
+        <strong>Heute gesamt:</strong> <span id="todayTotal">00:00</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Filter & Export</h2>
+      <div class="filters">
+        <div class="row">
+          <div>
+            <label for="fromDate">Von</label>
+            <input type="date" id="fromDate" />
+          </div>
+          <div>
+            <label for="toDate">Bis</label>
+            <input type="date" id="toDate" />
+          </div>
+          <div>
+            <label for="filterCategory">Kategorie</label>
+            <select id="filterCategory"></select>
+          </div>
+        </div>
+        <div class="row">
+          <button id="applyFiltersBtn" class="secondary">Filter anwenden</button>
+          <button id="clearFiltersBtn" class="secondary">Zurücksetzen</button>
+          <button id="exportCsvBtn" class="primary">CSV exportieren</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Übersicht</h2>
+      <div id="summary"></div>
+      <div id="entries"></div>
+    </section>
+
+    <section class="card">
+      <h2>Einstellungen</h2>
+      <div class="row">
+        <label><input type="checkbox" id="rounding5"> Auf 5 Minuten runden</label>
+      </div>
+      <div class="row">
+        <button id="backupBtn" class="secondary">Backup (JSON) speichern</button>
+        <label class="fileLabel">
+          <input type="file" id="restoreFile" accept="application/json" hidden />
+          <span class="secondary">Backup einspielen</span>
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>Alle Daten werden nur lokal auf deinem Gerät gespeichert.</small>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
